@@ -1,0 +1,25 @@
+{
+  "name": "ngx-formify",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "transpile": "ngc",
+    "package": "rollup -c",
+    "minify": "uglifyjs dist/bundles/forms.umd.js --screw-ie8 --compress --mangle --comments --output dist/bundles/forms.umd.min.js",
+    "build": "npm run transpile && npm run package && npm run minify"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@angular/compiler": "^5.0.2",
+    "@angular/compiler-cli": "^5.0.2",
+    "rollup": "^0.51.7",
+    "typescript": "^2.6.1",
+    "uglify-js": "^3.1.9"
+  },
+  "dependencies": {
+    "@angular/core": "^5.0.2"
+  }
+}

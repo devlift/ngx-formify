@@ -1,0 +1,32 @@
+{
+	"name": "ngx-formify",
+	"version": "0.0.1",
+	"description": "Decorator-based form rendering",
+	"main": "bundles/forms.umd.js",
+	"module": "index.js",
+	"typings": "index.d.ts",
+	"keywords": [
+		"forms",
+		"angular",
+		"angular2",
+		"angular 2",
+		"angular4",
+		"form",
+		"decorators",
+		"decorator"
+	],
+	"author": "Devlift Media",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/devlift/ngx-formify.git"
+	},
+	"homepage": "https://github.com/devlift/ngx-formify",
+	"bugs": {
+		"url": "https://github.com/devlift/ngx-formify/issues"
+	},
+	"peerDependencies": {
+		"@angular/core": "^2.4.0 || ^4.0.0",
+		"rxjs": "^5.0.1"
+	}
+}
