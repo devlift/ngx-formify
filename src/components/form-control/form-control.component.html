@@ -1,0 +1,3 @@
+<div class="formify-input" [ngSwitch]="formControl.controlType">
+	<input *ngSwitchCase="'input'" [placeholder]="formControl.placeholder" [formControl]="formControl" />
+</div>

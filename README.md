@@ -2,6 +2,8 @@
 
 Decorator-driven form rendering for Angular.
 
+This package is under heavy development and should be considered non-functional.
+
 # Usage
 
 TBD.
