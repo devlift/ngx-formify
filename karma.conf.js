@@ -29,6 +29,7 @@ module.exports = (config) => {
 		],
 		proxies: {
 			'/src/': '/base/src/'
-		}
+		},
+		singleRun: false
 	});
 };

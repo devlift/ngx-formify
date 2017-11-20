@@ -23,6 +23,7 @@ export class FormGroupService {
 
 					control.placeholder = data.placeholder || '';
 					control.controlType = data.type;
+					control.options = data.options;
 					
 					form.addControl( key, control );
 				}

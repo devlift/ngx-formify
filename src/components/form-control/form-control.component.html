@@ -1,3 +1,7 @@
 <div class="formify-input" [ngSwitch]="formControl.controlType">
-	<input *ngSwitchCase="'input'" [placeholder]="formControl.placeholder" [formControl]="formControl" />
+	<input *ngSwitchCase="'Input'" [placeholder]="formControl.placeholder" [formControl]="formControl" />
+	<textarea *ngSwitchCase="'TextArea'" [placeholder]="formControl.placeholder" [formControl]="formControl"></textarea>
+	<select *ngSwitchCase="'Select'" [formControl]="formControl">
+		<option *ngFor="let option of formControl.options" [value]="option.data">{{option.label}}</option>
+	</select>
 </div>
