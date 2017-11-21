@@ -1,5 +1,8 @@
 export enum FormControlType {
 	Input = "Input",
 	TextArea = "TextArea",
-	Select = "Select"
+	Select = "Select",
+	Radio = "Radio",
+	Checkbox = "Checkbox",
+	Password = "Password"
 }

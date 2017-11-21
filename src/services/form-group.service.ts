@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {FormGroup, Validators} from '@angular/forms';
-import {FormControlExtended} from '../models/form-control-extended.model';
+import {FormControlExtended, FormDecoratorData} from '../models/form-control-extended.model';
 
 @Injectable()
 export class FormGroupService {
@@ -13,21 +13,34 @@ export class FormGroupService {
 		}
 
 		if( instance ) {
+			let data: FormDecoratorData[] = [];
+			let haveNoOrder = true;
 			for( const key in instance ) {
-				if( (<any>instance)[key + "-form-metadata"] ) {
-					const data: any = (<any>instance)[key + "-form-metadata"];
-					let control = new FormControlExtended();
-					
-					control.setValue( data.defaultValue || '' );
-					control.setValidators( data.validators || [] );
-
-					control.placeholder = data.placeholder || '';
-					control.controlType = data.type;
-					control.options = data.options;
-					
-					form.addControl( key, control );
+				let d = (<any>instance)[key + "-form-metadata"];
+				if( d ) {
+					data.push( d );
+					if( d.order ) {
+						haveNoOrder = false;
+					}
 				}
 			}
+			
+			if( !haveNoOrder ) {
+				data = data.sort( (a, b) => ( a.order !== undefined ? a.order : Number.MAX_VALUE ) - ( b.order !== undefined ? b.order : Number.MAX_VALUE ) );
+			}
+
+			data.forEach( (datum: FormDecoratorData) => {
+				let control = new FormControlExtended();
+				
+				control.setValue( datum.defaultValue || '' );
+				control.setValidators( datum.validators || [] );
+
+				control.placeholder = datum.placeholder || '';
+				control.controlType = datum.type;
+				control.options = datum.options;
+				
+				form.addControl( datum.name, control );
+			} );
 		}
 
 		return form;

@@ -1,7 +1,16 @@
 <div class="formify-input" [ngSwitch]="formControl.controlType">
-	<input *ngSwitchCase="'Input'" [placeholder]="formControl.placeholder" [formControl]="formControl" />
+	<input *ngSwitchCase="'Input'" [placeholder]="formControl.placeholder" [formControl]="formControl" type="text" />
 	<textarea *ngSwitchCase="'TextArea'" [placeholder]="formControl.placeholder" [formControl]="formControl"></textarea>
 	<select *ngSwitchCase="'Select'" [formControl]="formControl">
 		<option *ngFor="let option of formControl.options" [value]="option.data">{{option.label}}</option>
 	</select>
+	<div *ngSwitchCase="'Radio'">
+		<div *ngFor="let option of formControl.options" class="formify-radio-line">
+			<input [value]="option.data" [formControl]="formControl" type="radio" /><span class="formify-radio-label">{{option.label}}</span>
+		</div>
+	</div>
+	<div class="formify-checkbox-line" *ngSwitchCase="'Checkbox'">
+		<input [formControl]="formControl" type="checkbox" /><span class="formify-checkbox-label">{{formControl.placeholder}}</span>
+	</div>
+	<input *ngSwitchCase="'Password'" [placeholder]="formControl.placeholder" [formControl]="formControl" type="password" />
 </div>

@@ -17,18 +17,52 @@ import { DebugElement } from '@angular/core';
 import {BrowserDynamicTestingModule, platformBrowserDynamicTesting} from '@angular/platform-browser-dynamic/testing';
 
 class TestModel {
-	@FormControl(FormControlType.Input, "An Input")
+	@FormControl(FormControlType.Input, {
+		order: 3,
+		placeholder: "An Input"
+	})
 	public date: string = "";
 
-	@FormControl(FormControlType.TextArea, "Enter comments here...", [], 'default value')
+	@FormControl(FormControlType.TextArea, {
+		order: 1,
+		placeholder: "Enter comments here...", 
+		defaultValue: 'default value'
+	})
 	public comment: string = "";
 	
-	@FormSelectControl([
+	@FormSelectControl(FormControlType.Select, [
 		{label: 'Banana', data: 1},
 		{label: 'Apple', data: 2},
 		{label: 'Orange', data: 3}
-	], 3)
+	], {
+		order: 2,
+		defaultValue: 3
+	} )
 	public fruit: number = 3;
+	
+	@FormSelectControl(FormControlType.Radio, [
+		{label: 'A', data: 1},
+		{label: 'B', data: 2},
+		{label: 'C', data: 3},
+		{label: 'D', data: 4}
+	], {
+		order: 0,
+		defaultValue: 2
+	} )
+	public grade: number = 2;
+	
+	@FormControl(FormControlType.Checkbox, {
+		order: 4,
+		placeholder: "A checkbox to my left",
+		defaultValue: true
+	} )
+	public left: boolean = true;
+	
+	@FormControl(FormControlType.Password, {
+		order: 5,
+		placeholder: "Don't show anyone!"
+	} )
+	public pass: string = "";
 }
 
 describe( 'formify', () => {
@@ -74,10 +108,14 @@ describe( 'formify', () => {
 		expect( el.querySelectorAll( 'formify-control' ).length ).toBeGreaterThan( 0 );
 	} );
 
-	it( 'should have one form control named date', () => {
+	it( 'should have the correct number of form controls', () => {
 		fixture.detectChanges();
-		expect( Object.keys( comp.formGroup.controls ) ).toEqual( ['date', 'comment', 'fruit'] );
-		expect( el.querySelectorAll( 'formify-control' ).length ).toEqual( 3 );
+		expect( el.querySelectorAll( 'formify-control' ).length ).toEqual( 6 );
+	} );
+
+	it( 'should have the correct order of form controls', () => {
+		fixture.detectChanges();
+		expect( Object.keys( comp.formGroup.controls ) ).toEqual( ['grade', 'comment', 'fruit', 'date', 'left', 'pass'] );
 	} );
 
 	it( 'should have an input form control', () => {
@@ -90,11 +128,10 @@ describe( 'formify', () => {
 	it( 'should have an input form control with placeholder', () => {
 		fixture.detectChanges();
 
-		let control = el.querySelectorAll( 'input' )
+		let control = el.querySelectorAll( 'input[type=text]' )
 		expect( control.length ).toBeGreaterThan( 0 );
 
-		expect( control[0].type ).toEqual( 'text' );
-		expect( control[0].placeholder ).toEqual( 'An Input' );
+		expect( (<HTMLInputElement>control[0]).placeholder ).toEqual( 'An Input' );
 	} );
 
 	it( 'should have a textarea form control with initial value', () => {
@@ -113,13 +150,39 @@ describe( 'formify', () => {
 		expect( control.length ).toBeGreaterThan( 0 );
 	} );
 
+	it( 'should have a radio form control', () => {
+		fixture.detectChanges();
+
+		let control = el.querySelectorAll( 'input[type=radio]' )
+		expect( control.length ).toBeGreaterThan( 0 );
+	} );
+
+	it( 'should have a checkbox form control', () => {
+		fixture.detectChanges();
+
+		let control = el.querySelectorAll( 'input[type=checkbox]' )
+		expect( control.length ).toBeGreaterThan( 0 );
+	} );
+
+	it( 'should have a password form control with placeholder', () => {
+		fixture.detectChanges();
+
+		let control = el.querySelectorAll( 'input[type=password]' )
+		expect( control.length ).toBeGreaterThan( 0 );
+
+		expect( (<HTMLInputElement>control[0]).placeholder ).toEqual( "Don't show anyone!" );
+	} );
+
 	it( 'should apply changes successfully', () => {
 		fixture.detectChanges();
 
 		comp.formGroup.setValue( {
 			date: 'hello',
 			comment: 'a comment',
-			fruit: 2
+			fruit: 2,
+			grade: 4,
+			left: false,
+			pass: 'test123'
 		} );
 
 		fixture.detectChanges();
@@ -127,6 +190,9 @@ describe( 'formify', () => {
 		expect( comp.formGroup.get( 'date' ).value ).toEqual( 'hello' );
 		expect( comp.formGroup.get( 'comment' ).value ).toEqual( 'a comment' );
 		expect( comp.formGroup.get( 'fruit' ).value ).toEqual( 2 );
+		expect( comp.formGroup.get( 'grade' ).value ).toEqual( 4 );
+		expect( comp.formGroup.get( 'left' ).value ).toEqual( false );
+		expect( comp.formGroup.get( 'pass' ).value ).toEqual( 'test123' );
 	} );
 
 	it( 'should respond to changes', () => {
@@ -135,13 +201,19 @@ describe( 'formify', () => {
 		comp.formGroup.setValue( {
 			date: 'hello',
 			comment: 'a comment',
-			fruit: 2
+			fruit: 2,
+			grade: 1,
+			left: false,
+			pass: 'abcd123'
 		} );
 
 		fixture.detectChanges();
 
-		expect( el.querySelectorAll( 'input' )[0].value ).toEqual( 'hello' );
+		expect( (<HTMLInputElement>el.querySelectorAll( 'input[type=text]' )[0]).value ).toEqual( 'hello' );
 		expect( el.querySelectorAll( 'textarea' )[0].value ).toEqual( 'a comment' );
 		expect( parseInt( el.querySelectorAll( 'select' )[0].value ) ).toEqual( 2 );
+		expect( (<HTMLInputElement>el.querySelectorAll( 'input[type=radio]' )[0]).value ).toEqual( 'on' );
+		expect( (<HTMLInputElement>el.querySelectorAll( 'input[type=checkbox]' )[0]).checked ).toEqual( false );
+		expect( (<HTMLInputElement>el.querySelectorAll( 'input[type=password]' )[0]).value ).toEqual( 'abcd123' );
 	} );
 });
