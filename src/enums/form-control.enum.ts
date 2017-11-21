@@ -4,5 +4,6 @@ export enum FormControlType {
 	Select = "Select",
 	Radio = "Radio",
 	Checkbox = "Checkbox",
-	Password = "Password"
+	Password = "Password",
+	File = "File"
 }

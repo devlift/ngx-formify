@@ -1,6 +1,12 @@
-import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnChanges } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormControlExtended } from '../../models/form-control-extended.model';
+import { FileExtended } from '../../models/file-extended.model';
+
+export interface FileEmission {
+	files: FileExtended[];
+	formControlName: string;
+}
 
 @Component({
 	selector: 'formify',
@@ -9,6 +15,8 @@ import { FormControlExtended } from '../../models/form-control-extended.model';
 })
 export class FormComponent implements OnChanges, OnInit {
 	@Input() formGroup: FormGroup;
+	@Output() onFileSelected = new EventEmitter<FileEmission>();
+
 	private keys: string[] = [];
 	
 	constructor() {}
@@ -20,5 +28,9 @@ export class FormComponent implements OnChanges, OnInit {
 	ngOnChanges(changes: any) {
 		this.keys = Object.keys( this.formGroup.controls );
 		console.log( changes );
+	}
+
+	fileSelected( files: FileExtended[], formControlName: string ) {
+		this.onFileSelected.emit( { files: files, formControlName: formControlName } );
 	}
 }

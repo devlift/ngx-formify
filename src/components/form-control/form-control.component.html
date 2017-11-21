@@ -13,4 +13,5 @@
 		<input [formControl]="formControl" type="checkbox" /><span class="formify-checkbox-label">{{formControl.placeholder}}</span>
 	</div>
 	<input *ngSwitchCase="'Password'" [placeholder]="formControl.placeholder" [formControl]="formControl" type="password" />
+	<input *ngSwitchCase="'File'" [formControl]="formControl" type="file" (change)="fileSelected( $event.target.files )" />
 </div>

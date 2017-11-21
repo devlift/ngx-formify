@@ -1,3 +1,3 @@
 <div class="formify">
-	<formify-control *ngFor="let control of keys" [formControl]="formGroup.controls[control]" ngDefaultControl></formify-control>
+	<formify-control *ngFor="let control of keys" [formControl]="formGroup.controls[control]" (onFileSelected)="fileSelected( $event, control )" ngDefaultControl></formify-control>
 </div>

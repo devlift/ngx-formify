@@ -1,6 +1,7 @@
 import { FormControlComponent } from './components/form-control/form-control.component';
 import { FormControl } from './decorators/form-control.decorator';
 import { FormSelectControl } from './decorators/form-select-control.decorator';
+import { FormFileControl } from './decorators/form-file-control.decorator';
 import { FormComponent } from './components/form/form.component';
 import { FormGroupService } from './services/form-group.service';
 import { FormControlType } from './enums/form-control.enum';
@@ -63,6 +64,11 @@ class TestModel {
 		placeholder: "Don't show anyone!"
 	} )
 	public pass: string = "";
+	
+	@FormFileControl({
+		order: 6
+	} )
+	public file: ArrayBuffer = new ArrayBuffer(0);
 }
 
 describe( 'formify', () => {
@@ -110,12 +116,12 @@ describe( 'formify', () => {
 
 	it( 'should have the correct number of form controls', () => {
 		fixture.detectChanges();
-		expect( el.querySelectorAll( 'formify-control' ).length ).toEqual( 6 );
+		expect( el.querySelectorAll( 'formify-control' ).length ).toEqual( 7 );
 	} );
 
 	it( 'should have the correct order of form controls', () => {
 		fixture.detectChanges();
-		expect( Object.keys( comp.formGroup.controls ) ).toEqual( ['grade', 'comment', 'fruit', 'date', 'left', 'pass'] );
+		expect( Object.keys( comp.formGroup.controls ) ).toEqual( ['grade', 'comment', 'fruit', 'date', 'left', 'pass', 'file'] );
 	} );
 
 	it( 'should have an input form control', () => {
@@ -173,6 +179,13 @@ describe( 'formify', () => {
 		expect( (<HTMLInputElement>control[0]).placeholder ).toEqual( "Don't show anyone!" );
 	} );
 
+	it( 'should have a file form control', () => {
+		fixture.detectChanges();
+
+		let control = el.querySelectorAll( 'input[type=file]' )
+		expect( control.length ).toBeGreaterThan( 0 );
+	} );
+
 	it( 'should apply changes successfully', () => {
 		fixture.detectChanges();
 
@@ -182,7 +195,8 @@ describe( 'formify', () => {
 			fruit: 2,
 			grade: 4,
 			left: false,
-			pass: 'test123'
+			pass: 'test123',
+			file: ''
 		} );
 
 		fixture.detectChanges();
@@ -193,6 +207,7 @@ describe( 'formify', () => {
 		expect( comp.formGroup.get( 'grade' ).value ).toEqual( 4 );
 		expect( comp.formGroup.get( 'left' ).value ).toEqual( false );
 		expect( comp.formGroup.get( 'pass' ).value ).toEqual( 'test123' );
+		// todo: file
 	} );
 
 	it( 'should respond to changes', () => {
@@ -204,7 +219,8 @@ describe( 'formify', () => {
 			fruit: 2,
 			grade: 1,
 			left: false,
-			pass: 'abcd123'
+			pass: 'abcd123',
+			file: ''
 		} );
 
 		fixture.detectChanges();
@@ -215,5 +231,6 @@ describe( 'formify', () => {
 		expect( (<HTMLInputElement>el.querySelectorAll( 'input[type=radio]' )[0]).value ).toEqual( 'on' );
 		expect( (<HTMLInputElement>el.querySelectorAll( 'input[type=checkbox]' )[0]).checked ).toEqual( false );
 		expect( (<HTMLInputElement>el.querySelectorAll( 'input[type=password]' )[0]).value ).toEqual( 'abcd123' );
+		// todo: file
 	} );
 });
