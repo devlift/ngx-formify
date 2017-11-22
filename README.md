@@ -42,7 +42,12 @@ Usage: `FormGroupService.build( class ): FormGroup`
 
 Directive to render a generated FormGroup.
 
-Usage: `<formify [formGroup]="form"></formify>`
+Usage: `<formify [formGroup]="form" [formClass]="class" [controlClass]="class" [controlInnerClass]="class"></formify>`
+
+- `formGroup`: FormGroup to render
+- `formClass`: Class for outermost tag
+- `controlClass`: Class for control (`input`, `textarea` etc) container
+- `controlInnerClass`: Class for control itself
 
 # Example
 

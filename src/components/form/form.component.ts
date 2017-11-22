@@ -15,6 +15,10 @@ export interface FileEmission {
 })
 export class FormComponent implements OnChanges, OnInit {
 	@Input() formGroup: FormGroup;
+	@Input() formClass: string = "";
+	@Input() controlClass: string = "";
+	@Input() controlInnerClass: string = "";
+	
 	@Output() onFileSelected = new EventEmitter<FileEmission>();
 
 	private keys: string[] = [];

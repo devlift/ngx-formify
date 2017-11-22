@@ -1,17 +1,17 @@
-<div class="formify-input" [ngSwitch]="formControl.controlType">
-	<input *ngSwitchCase="'Input'" [placeholder]="formControl.placeholder" [formControl]="formControl" type="text" />
-	<textarea *ngSwitchCase="'TextArea'" [placeholder]="formControl.placeholder" [formControl]="formControl"></textarea>
-	<select *ngSwitchCase="'Select'" [formControl]="formControl">
+<div class="formify-input" [class]="controlClass" [ngSwitch]="formControl.controlType">
+	<input [class]="controlInnerClass" *ngSwitchCase="'Input'" [placeholder]="formControl.placeholder" [formControl]="formControl" type="text" />
+	<textarea [class]="controlInnerClass" *ngSwitchCase="'TextArea'" [placeholder]="formControl.placeholder" [formControl]="formControl"></textarea>
+	<select [class]="controlInnerClass" *ngSwitchCase="'Select'" [formControl]="formControl">
 		<option *ngFor="let option of formControl.options" [value]="option.data">{{option.label}}</option>
 	</select>
 	<div *ngSwitchCase="'Radio'">
 		<div *ngFor="let option of formControl.options" class="formify-radio-line">
-			<input [value]="option.data" [formControl]="formControl" type="radio" /><span class="formify-radio-label">{{option.label}}</span>
+			<input [class]="controlInnerClass" [value]="option.data" [formControl]="formControl" type="radio" /><span class="formify-radio-label">{{option.label}}</span>
 		</div>
 	</div>
 	<div class="formify-checkbox-line" *ngSwitchCase="'Checkbox'">
-		<input [formControl]="formControl" type="checkbox" /><span class="formify-checkbox-label">{{formControl.placeholder}}</span>
+		<input [class]="controlInnerClass" [formControl]="formControl" type="checkbox" /><span class="formify-checkbox-label">{{formControl.placeholder}}</span>
 	</div>
-	<input *ngSwitchCase="'Password'" [placeholder]="formControl.placeholder" [formControl]="formControl" type="password" />
-	<input *ngSwitchCase="'File'" [formControl]="formControl" type="file" (change)="fileSelected( $event.target.files )" />
+	<input [class]="controlInnerClass" *ngSwitchCase="'Password'" [placeholder]="formControl.placeholder" [formControl]="formControl" type="password" />
+	<input [class]="controlInnerClass" *ngSwitchCase="'File'" [formControl]="formControl" type="file" (change)="fileSelected( $event.target.files )" />
 </div>

@@ -9,6 +9,8 @@ import { FileExtended } from '../../models/file-extended.model';
 })
 export class FormControlComponent {
 	@Input() formControl: FormControlExtended;
+	@Input() controlClass: string = "";
+	@Input() controlInnerClass: string = "";
 
 	@Output() onFileSelected = new EventEmitter<FileExtended[]>();
 
