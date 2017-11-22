@@ -1,11 +1,10 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { FormControlExtended } from '../../models/form-control-extended.model';
-import { FileExtended } from '../../models/file-extended.model';
+import FormControlExtended from '../../models/form-control-extended.model';
+import FileExtended from '../../models/file-extended.model';
 
 @Component({
 	selector: 'formify-control',
-	templateUrl: './form-control.component.html',
-	moduleId: module.id
+	templateUrl: './form-control.component.html'
 })
 export class FormControlComponent {
 	@Input() formControl: FormControlExtended;

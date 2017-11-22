@@ -1,11 +1,22 @@
+import angular from 'rollup-plugin-angular';
+import typescript from 'rollup-plugin-typescript';
+
 export default {
-	entry: 'dist/index.js',
-	dest: 'dist/bundles/forms.umd.js',
-	sourceMap: false,
-	format: 'umd',
-	moduleName: 'devlift.forms',
+	input: 'index.ts',
+	sourcemap: false,
+	output: {
+		file: 'dist/bundles/forms.umd.js',
+		format: 'umd'
+	},
+	name: 'ngx-formify',
+	plugins: [
+		angular(),
+		typescript({ typescript: require( 'typescript' ) })
+	],
 	globals: {
 		'@angular/core': 'ng.core',
+		'@angular/forms': 'ng.forms',
+		'@angular/common': 'ng.common',
 		'rxjs/Observable': 'Rx',
 		'rxjs/ReplaySubject': 'Rx',
 		'rxjs/add/operator/map': 'Rx.Observable.prototype',

@@ -78,4 +78,4 @@ const fg = fgService.build( TestForm );
 
 1. `npm test`
 2. `npm run-script build`
-3. Copy `package.dist.json` to `dist/package.json`, copy `README.md` to `dist/README.md`
+

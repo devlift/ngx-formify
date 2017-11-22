@@ -1,6 +1,6 @@
 import { ValidatorFn } from '@angular/forms';
 import { FormControlType } from '../enums/form-control.enum';
-import { SelectOption } from '../models/form-control-extended.model';
+import SelectOption from '../models/select-option.model';
 
 export interface FormSelectDecoratorOptions {
 	order?: number;

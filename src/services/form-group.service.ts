@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {FormGroup, Validators} from '@angular/forms';
-import {FormControlExtended, FormDecoratorData} from '../models/form-control-extended.model';
+import FormControlExtended from '../models/form-control-extended.model';
+import FormDecoratorData from '../models/form-decorator-data.model';
 
 @Injectable()
 export class FormGroupService {

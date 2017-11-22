@@ -1,4 +1,4 @@
-export interface FileExtended {
+export default interface FileExtended {
 	lastModifiedDate: Date;
 	name: string;
 	size: number;

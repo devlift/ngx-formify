@@ -6,7 +6,7 @@
 		"experimentalDecorators": true,
 		"strictNullChecks": true,
 		"noImplicitAny": true,
-		"module": "es2015",
+		"module": "es6",
 		"moduleResolution": "node",
 		"paths": {
 			"@angular/core": [
@@ -23,7 +23,7 @@
 		"target": "es5",
 		"skipLibCheck": true,
 		"lib": [
-			"es2015",
+			"es6",
 			"dom"
 		]
 	},
@@ -31,6 +31,7 @@
 		"./index.ts"
 	],
 	"angularCompilerOptions": {
-		"strictMetadataEmit": true
+		"strictMetadataEmit": true,
+		"skipTemplateCodegen": true
 	}
 }
