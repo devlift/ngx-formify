@@ -2,8 +2,6 @@
 
 Decorator-driven form creation for Angular.
 
-This package is under heavy development and should be considered non-functional.
-
 # Usage
 
 ## `@FormControl`
