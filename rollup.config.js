@@ -5,7 +5,7 @@ export default {
 	input: 'index.ts',
 	sourcemap: false,
 	output: {
-		file: 'dist/bundles/forms.umd.js',
+		file: 'dist/bundles/formify.umd.js',
 		format: 'umd'
 	},
 	name: 'ngx-formify',
