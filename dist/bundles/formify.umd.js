@@ -66,7 +66,7 @@ var FormControlComponent = /** @class */ (function () {
     FormControlComponent = __decorate([
         core.Component({
             selector: 'formify-control',
-            template: "<div class=\"formify-input\" [class]=\"controlClass\" [ngSwitch]=\"formControl.controlType\">\n\t<input [class]=\"controlInnerClass\" *ngSwitchCase=\"'Input'\" [placeholder]=\"formControl.placeholder\" [formControl]=\"formControl\" type=\"text\" />\n\t<textarea [class]=\"controlInnerClass\" *ngSwitchCase=\"'TextArea'\" [placeholder]=\"formControl.placeholder\" [formControl]=\"formControl\"></textarea>\n\t<select [class]=\"controlInnerClass\" *ngSwitchCase=\"'Select'\" [formControl]=\"formControl\">\n\t\t<option *ngFor=\"let option of formControl.options\" [value]=\"option.data\">{{option.label}}</option>\n\t</select>\n\t<div *ngSwitchCase=\"'Radio'\">\n\t\t<div *ngFor=\"let option of formControl.options\" class=\"formify-radio-line\">\n\t\t\t<input [class]=\"controlInnerClass\" [value]=\"option.data\" [formControl]=\"formControl\" type=\"radio\" /><span class=\"formify-radio-label\">{{option.label}}</span>\n\t\t</div>\n\t</div>\n\t<div class=\"formify-checkbox-line\" *ngSwitchCase=\"'Checkbox'\">\n\t\t<input [class]=\"controlInnerClass\" [formControl]=\"formControl\" type=\"checkbox\" /><span class=\"formify-checkbox-label\">{{formControl.placeholder}}</span>\n\t</div>\n\t<input [class]=\"controlInnerClass\" *ngSwitchCase=\"'Password'\" [placeholder]=\"formControl.placeholder\" [formControl]=\"formControl\" type=\"password\" />\n\t<input [class]=\"controlInnerClass\" *ngSwitchCase=\"'File'\" [formControl]=\"formControl\" type=\"file\" (change)=\"fileSelected( $event.target.files )\" />\n</div>"
+            template: "<div class=\"formify-input\" [class]=\"controlClass\" [ngSwitch]=\"formControl.controlType\">\n\t<input [class]=\"controlInnerClass\" *ngSwitchCase=\"'Input'\" [placeholder]=\"formControl.placeholder\" [formControl]=\"formControl\" type=\"text\" />\n\t<textarea [class]=\"controlInnerClass\" *ngSwitchCase=\"'TextArea'\" [placeholder]=\"formControl.placeholder\" [formControl]=\"formControl\"></textarea>\n\t<select [class]=\"controlInnerClass\" *ngSwitchCase=\"'Select'\" [formControl]=\"formControl\">\n\t\t<option *ngFor=\"let option of formControl.options\" [value]=\"option.data\">{{option.label}}</option>\n\t</select>\n\t<div *ngSwitchCase=\"'Radio'\">\n\t\t<div *ngFor=\"let option of formControl.options\" class=\"formify-radio-line\">\n\t\t\t<input [class]=\"controlInnerClass\" [value]=\"option.data\" [formControl]=\"formControl\" type=\"radio\" /><span class=\"formify-radio-label\">{{option.label}}</span>\n\t\t</div>\n\t</div>\n\t<div class=\"formify-checkbox-line\" *ngSwitchCase=\"'Checkbox'\">\n\t\t<input [class]=\"controlInnerClass\" [formControl]=\"formControl\" type=\"checkbox\" /><span class=\"formify-checkbox-label\">{{formControl.placeholder}}</span>\n\t</div>\n\t<input [class]=\"controlInnerClass\" *ngSwitchCase=\"'Password'\" [placeholder]=\"formControl.placeholder\" [formControl]=\"formControl\" type=\"password\" />\n\t<input [class]=\"controlInnerClass\" *ngSwitchCase=\"'File'\" [formControl]=\"formControl\" type=\"file\" (change)=\"fileSelected( $event.target.files )\" />\n</div>",
         })
     ], FormControlComponent);
     return FormControlComponent;
@@ -108,7 +108,7 @@ var FormComponent = /** @class */ (function () {
     FormComponent = __decorate([
         core.Component({
             selector: 'formify',
-            template: "<div class=\"formify\" [class]=\"formClass\">\n\t<formify-control *ngFor=\"let control of keys\" [formControl]=\"formGroup.controls[control]\" [controlClass]=\"controlClass\" [controlInnerClass]=\"controlInnerClass\" (onFileSelected)=\"fileSelected( $event, control )\" ngDefaultControl></formify-control>\n</div>\n"
+            template: "<div class=\"formify\" [class]=\"formClass\">\n\t<formify-control *ngFor=\"let control of keys\" [formControl]=\"formGroup.controls[control]\" [controlClass]=\"controlClass\" [controlInnerClass]=\"controlInnerClass\" (onFileSelected)=\"fileSelected( $event, control )\" ngDefaultControl></formify-control>\n</div>\n",
         })
     ], FormComponent);
     return FormComponent;
@@ -253,6 +253,8 @@ var FormFileControl = function (options) {
         var _a;
     };
 };
+
+/// <reference path="./node_modules/@types/node/index.d.ts" />
 
 exports.FormifyModule = FormifyModule;
 exports.FormControlComponent = FormControlComponent;

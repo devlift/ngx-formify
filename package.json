@@ -1,6 +1,6 @@
 {
   "name": "ngx-formify",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "dist/bundles/formify.umd.min.js",
   "module": "dist/index.js",
@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^5.0.2",
     "@angular/platform-browser-dynamic": "^5.0.2",
     "@types/jasmine": "^2.8.2",
+    "@types/node": "^8.0.53",
     "core-js": "^2.5.1",
     "jasmine": "^2.8.0",
     "karma": "^1.7.1",

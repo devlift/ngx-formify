@@ -6,7 +6,8 @@ import FileEmission from '../../models/file-emission.model';
 
 @Component({
 	selector: 'formify',
-	templateUrl: './form.component.html'
+	templateUrl: './form.component.html',
+	moduleId: module.id
 })
 export class FormComponent implements OnChanges, OnInit {
 	@Input() formGroup: FormGroup;
