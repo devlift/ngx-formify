@@ -1,1 +1,0 @@
-{"version":3,"file":"file-emission.model.js","sourceRoot":"","sources":["../../../src/models/file-emission.model.ts"],"names":[],"mappings":"AAAA,OAAO,YAAY,MAAM,uBAAuB,CAAC","sourcesContent":["import FileExtended from './file-extended.model';\r\n\r\nexport default interface FileEmission {\r\n\tfiles: FileExtended[];\r\n\tformControlName: string;\r\n}\r\n"]}

@@ -1,1 +1,0 @@
-{"version":3,"file":"file-extended.model.js","sourceRoot":"","sources":["../../../src/models/file-extended.model.ts"],"names":[],"mappings":"","sourcesContent":["export default interface FileExtended {\r\n\tlastModifiedDate: Date;\r\n\tname: string;\r\n\tsize: number;\r\n\ttype: string;\r\n\tdata?: ArrayBuffer;\r\n}"]}

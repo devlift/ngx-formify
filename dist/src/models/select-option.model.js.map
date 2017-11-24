@@ -1,1 +1,0 @@
-{"version":3,"file":"select-option.model.js","sourceRoot":"","sources":["../../../src/models/select-option.model.ts"],"names":[],"mappings":"","sourcesContent":["export default interface SelectOption {\r\n\tlabel: string;\r\n\tdata: any;\r\n}"]}

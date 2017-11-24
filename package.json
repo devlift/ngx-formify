@@ -1,16 +1,14 @@
 {
   "name": "ngx-formify",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "",
   "main": "dist/bundles/formify.umd.min.js",
-  "module": "dist/index.js",
-  "jsnext:main": "dist/index.js",
   "scripts": {
     "test": "karma start",
     "transpile": "ngc",
     "package": "rollup -c",
     "minify": "uglifyjs dist/bundles/formify.umd.js --screw-ie8 --compress --mangle --comments --output dist/bundles/formify.umd.min.js",
-    "build": "npm run transpile && npm run package && npm run minify"
+    "build": "npm run package && npm run minify"
   },
   "author": "Devlift Media",
   "license": "ISC",
