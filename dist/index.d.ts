@@ -1,4 +1,3 @@
-/// <reference path="../node_modules/@types/node/index.d.ts" />
 export { FormifyModule } from './src/formify.module';
 export { FormControlComponent } from './src/components/form-control/form-control.component';
 export { FormComponent } from './src/components/form/form.component';
