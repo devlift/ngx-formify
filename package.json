@@ -1,6 +1,6 @@
 {
   "name": "ngx-formify",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "main": "dist/bundles/formify.umd.min.js",
   "module": "dist/index.js",
@@ -30,7 +30,6 @@
     "@angular/platform-browser": "^5.0.2",
     "@angular/platform-browser-dynamic": "^5.0.2",
     "@types/jasmine": "^2.8.2",
-    "@types/node": "^8.0.53",
     "core-js": "^2.5.1",
     "jasmine": "^2.8.0",
     "karma": "^1.7.1",
@@ -44,10 +43,13 @@
     "uglify-js": "^3.1.9",
     "zone.js": "^0.8.18"
   },
-  "dependencies": {
+  "peerDependencies": {
     "@angular/core": "^4.0.0 || ^5.0.0",
 		"@angular/forms": "^4.0.0 || ^5.0.0",
 		"@angular/common": "^4.0.0 || ^5.0.0",
 		"rxjs": "^5.0.0"
+  },
+  "dependencies": {
+    "@types/node": "^8.0.0"
   }
 }
