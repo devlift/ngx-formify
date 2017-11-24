@@ -1,6 +1,6 @@
 {
   "name": "ngx-formify",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "",
   "main": "dist/bundles/formify.umd.min.js",
   "module": "dist/index.js",

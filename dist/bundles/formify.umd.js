@@ -164,32 +164,6 @@ var FormGroupService = /** @class */ (function () {
     return FormGroupService;
 }());
 
-var FormifyModule = /** @class */ (function () {
-    function FormifyModule() {
-    }
-    FormifyModule = __decorate([
-        core.NgModule({
-            imports: [
-                common.CommonModule,
-                forms.FormsModule,
-                forms.ReactiveFormsModule
-            ],
-            declarations: [
-                FormControlComponent,
-                FormComponent
-            ],
-            providers: [
-                FormGroupService
-            ],
-            exports: [
-                FormControlComponent,
-                FormComponent
-            ]
-        })
-    ], FormifyModule);
-    return FormifyModule;
-}());
-
 var FormControl$1 = function (type, options) {
     var o = options || {};
     return function (target, property) {
@@ -253,6 +227,32 @@ var FormFileControl = function (options) {
         var _a;
     };
 };
+
+var FormifyModule = /** @class */ (function () {
+    function FormifyModule() {
+    }
+    FormifyModule = __decorate([
+        core.NgModule({
+            imports: [
+                common.CommonModule,
+                forms.FormsModule,
+                forms.ReactiveFormsModule
+            ],
+            declarations: [
+                FormControlComponent,
+                FormComponent
+            ],
+            providers: [
+                FormGroupService
+            ],
+            exports: [
+                FormControlComponent,
+                FormComponent
+            ]
+        })
+    ], FormifyModule);
+    return FormifyModule;
+}());
 
 exports.FormifyModule = FormifyModule;
 exports.FormControlComponent = FormControlComponent;
